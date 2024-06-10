@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "830219440107",
+    "project_id": "chomba-db",
+    "storage_bucket": "chomba-db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:830219440107:android:c5c1acf0869fe4b3f713ae",
+        "android_client_info": {
+          "package_name": "ac.ke.chomba_midsem"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUYcyPpKu9F4OzPQHl0TJ9gq7wmioi8CQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
