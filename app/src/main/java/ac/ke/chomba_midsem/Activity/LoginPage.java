@@ -1,4 +1,4 @@
-package ac.ke.chomba_midsem;
+package ac.ke.chomba_midsem.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,11 +18,13 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity {
+import ac.ke.chomba_midsem.R;
+
+public class LoginPage extends AppCompatActivity {
 
     TextInputEditText editTextEmail,editTextPassword;
 
-    Button signin;
+    Button login;
 
     TextView signup;
 
@@ -32,34 +34,34 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login_page);
 
          editTextEmail= findViewById(R.id.email);
          editTextPassword=findViewById(R.id.password);
-         signin=findViewById(R.id.sign_in);
+         login=findViewById(R.id.log_in);
          signup=findViewById(R.id.sign_up);
 
          signup.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Intent intent=new Intent(MainActivity.this,RegisterPage.class);
+                 Intent intent=new Intent(LoginPage.this, RegisterPage.class);
                  startActivity(intent);
                  finish();
              }
          });
 
-         signin.setOnClickListener(new View.OnClickListener() {
+         login.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
                  String email,password;
                  email = String.valueOf(editTextEmail.getText());
                  password = String.valueOf(editTextPassword.getText());
                  if (TextUtils.isEmpty(email)){
-                     Toast.makeText(MainActivity.this,"enter email",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(LoginPage.this,"enter email",Toast.LENGTH_SHORT).show();
                      return;
                  }
                  if (TextUtils.isEmpty(password)){
-                     Toast.makeText(MainActivity.this,"enter password",Toast.LENGTH_SHORT).show();
+                     Toast.makeText(LoginPage.this,"enter password",Toast.LENGTH_SHORT).show();
                      return;
                  }
                  firebaseAuth.signInWithEmailAndPassword(email,password)
@@ -67,13 +69,13 @@ public class MainActivity extends AppCompatActivity {
                              @Override
                              public void onComplete(@NonNull Task<AuthResult> task) {
                                  if(task.isSuccessful()){
-                                     Toast.makeText(MainActivity.this,"login successful",Toast.LENGTH_SHORT).show();
-                                     Intent intent= new Intent(MainActivity.this,HomePage.class);
+                                     Toast.makeText(LoginPage.this,"login successful",Toast.LENGTH_SHORT).show();
+                                     Intent intent= new Intent(LoginPage.this, HomePage.class);
                                      startActivity(intent);
                                      finish();
                                  }
                                  else{
-                                     Toast.makeText(MainActivity.this,"Authentication failed",Toast.LENGTH_SHORT).show();
+                                     Toast.makeText(LoginPage.this,"Authentication failed",Toast.LENGTH_SHORT).show();
                                  }
                              }
                          });

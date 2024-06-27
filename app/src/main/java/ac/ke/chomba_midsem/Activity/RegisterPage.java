@@ -1,4 +1,4 @@
-package ac.ke.chomba_midsem;
+package ac.ke.chomba_midsem.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +17,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import ac.ke.chomba_midsem.R;
 
 public class RegisterPage extends AppCompatActivity {
 
@@ -43,7 +45,7 @@ public class RegisterPage extends AppCompatActivity {
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(RegisterPage.this,MainActivity.class);
+                Intent intent=new Intent(RegisterPage.this, LoginPage.class);
                 startActivity(intent);
                 finish();
             }
@@ -69,7 +71,7 @@ public class RegisterPage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()){
                                     Toast.makeText(RegisterPage.this,"Registration successfully!",Toast.LENGTH_SHORT).show();
-                                    Intent intent=new Intent(RegisterPage.this,MainActivity.class);
+                                    Intent intent=new Intent(RegisterPage.this, LoginPage.class);
                                     startActivity(intent);
                                     finish();
                                 }
