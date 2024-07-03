@@ -2,87 +2,39 @@ package ac.ke.chomba_midsem.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import ac.ke.chomba_midsem.databinding.ActivityLoginPageBinding;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-
-import ac.ke.chomba_midsem.R;
-
-public class LoginPage extends AppCompatActivity {
-
-    TextInputEditText editTextEmail,editTextPassword;
-
-    Button login;
-
-    TextView signup;
-
-    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
+public class LoginPage extends BaseActivity {
+    ActivityLoginPageBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login_page);
-
-         editTextEmail= findViewById(R.id.email);
-         editTextPassword=findViewById(R.id.password);
-         login=findViewById(R.id.log_in);
-         signup=findViewById(R.id.sign_up);
-
-         signup.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 Intent intent=new Intent(LoginPage.this, RegisterPage.class);
-                 startActivity(intent);
-                 finish();
-             }
-         });
-
-         login.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 String email,password;
-                 email = String.valueOf(editTextEmail.getText());
-                 password = String.valueOf(editTextPassword.getText());
-                 if (TextUtils.isEmpty(email)){
-                     Toast.makeText(LoginPage.this,"enter email",Toast.LENGTH_SHORT).show();
-                     return;
-                 }
-                 if (TextUtils.isEmpty(password)){
-                     Toast.makeText(LoginPage.this,"enter password",Toast.LENGTH_SHORT).show();
-                     return;
-                 }
-                 firebaseAuth.signInWithEmailAndPassword(email,password)
-                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                             @Override
-                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                 if(task.isSuccessful()){
-                                     Toast.makeText(LoginPage.this,"login successful",Toast.LENGTH_SHORT).show();
-                                     Intent intent= new Intent(LoginPage.this, HomePage.class);
-                                     startActivity(intent);
-                                     finish();
-                                 }
-                                 else{
-                                     Toast.makeText(LoginPage.this,"Authentication failed",Toast.LENGTH_SHORT).show();
-                                 }
-                             }
-                         });
-             }
-         });
+        binding = ActivityLoginPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
 
+        setVariable();
+    }
+    private void setVariable () {
+        binding.logIn.setOnClickListener(v -> {
+            String email = binding.email.getText().toString();
+            String password = binding.password.getText().toString();
+            if (!email.isEmpty() && !password.isEmpty()) {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(LoginPage.this, task -> {
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(LoginPage.this, MainActivity.class));
+                        Toast.makeText(LoginPage.this, "Authentication has succeeded", Toast.LENGTH_SHORT).show();
 
+                    } else {
+                        Toast.makeText(LoginPage.this, "Authentication has failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } else {
+                Toast.makeText(LoginPage.this, "Please enter your email and password", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

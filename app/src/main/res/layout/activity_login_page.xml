@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/newbackground"
+    android:background="@drawable/purpfade11"
     android:padding="40dp"
     android:orientation="vertical"
     tools:context=".Activity.LoginPage">
@@ -36,17 +36,18 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:background="@drawable/solid_background2"
             android:hint="EMAIL"
-            android:textColorHint="@color/white"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="20dp"
         app:hintTextColor="@color/white"
         app:endIconMode="password_toggle">
@@ -55,10 +56,11 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="PASSWORD"
-            android:padding="20sp"
             android:background="@drawable/solid_background2"
-            android:inputType="textPassword" />
+            android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,23 +81,6 @@
         android:layout_marginTop="20dp"
         android:gravity="center">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DONT HAVE AN ACCOUNT?"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/sign_up"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Signup"
-            android:textStyle="bold"
-            android:textSize="13sp"
-            android:textColor="@color/yellow"
-            android:layout_marginLeft="10dp" />
 
     </LinearLayout>
 

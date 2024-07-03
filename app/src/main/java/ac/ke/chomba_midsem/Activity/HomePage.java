@@ -1,37 +1,37 @@
 package ac.ke.chomba_midsem.Activity;
 
-import android.os.Bundle;
-import android.view.View;
 
-import ac.ke.chomba_midsem.R;
+import android.content.Intent;
+import android.os.Bundle;
+
 import ac.ke.chomba_midsem.databinding.ActivityHomePageBinding;
+
 
 public class HomePage extends BaseActivity {
     ActivityHomePageBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityHomePageBinding.inflate(getLayoutInflater());
+        binding=ActivityHomePageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         setVariable();
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.white));
+
     }
 
     private void setVariable() {
-        binding.LoginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        binding.SignUpBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        binding.LoginBtn.setOnClickListener(v -> {
+            if(mAuth.getCurrentUser()!=null){
+                startActivity(new Intent(HomePage.this,MainActivity.class));
+            }else{
+                startActivity(new Intent(HomePage.this,LoginPage.class));
 
             }
 
         });
+
+        binding.SignUpBtn.setOnClickListener(v -> startActivity(new Intent(HomePage.this,RegisterPage.class)));
+
     }
-
 }

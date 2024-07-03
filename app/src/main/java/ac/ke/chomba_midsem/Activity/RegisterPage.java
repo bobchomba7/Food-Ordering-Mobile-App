@@ -2,87 +2,47 @@ package ac.ke.chomba_midsem.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.util.Log;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import ac.ke.chomba_midsem.databinding.ActivityRegisterPageBinding;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
+public class RegisterPage extends BaseActivity {
+    ActivityRegisterPageBinding binding;
 
-import ac.ke.chomba_midsem.R;
-
-public class RegisterPage extends AppCompatActivity {
-
-
-    TextInputEditText editTextEmail,editTextPassword;
-
-    Button signup;
-
-    TextView signin;
-
-    FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register_page);
+        binding = ActivityRegisterPageBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        editTextEmail= findViewById(R.id.email);
-        editTextPassword=findViewById(R.id.password);
-        signin=findViewById(R.id.sign_in);
-        signup=findViewById(R.id.sign_up);
+        setVariable();
 
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(RegisterPage.this, LoginPage.class);
-                startActivity(intent);
-                finish();
+    }
+
+    private void setVariable() {
+        binding.signUp.setOnClickListener(v -> {
+            String email = binding.email.getText().toString();
+            String password = binding.password.getText().toString();
+
+            if (password.length() < 6) {
+                Toast.makeText(RegisterPage.this, "Password must be at least 6 characters", Toast.LENGTH_SHORT).show();
+                return;
             }
-        });
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterPage.this, task -> {
+                if (task.isComplete()) {
+                    Log.i(TAG, "onComplete:");
+                    startActivity(new Intent(RegisterPage.this,LoginPage.class));
+                    Toast.makeText(RegisterPage.this, "Authentication successful.", Toast.LENGTH_SHORT).show();
 
-        signup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email,password;
-                email = String.valueOf(editTextEmail.getText());
-                password = String.valueOf(editTextPassword.getText());
-                if (TextUtils.isEmpty(email)){
-                    Toast.makeText(RegisterPage.this,"enter email",Toast.LENGTH_SHORT).show();
-                    return;
+                } else {
+                    Log.i(TAG, "failure" + task.getException());
+                    Toast.makeText(RegisterPage.this, "Authentication failed.",
+                            Toast.LENGTH_SHORT).show();
                 }
-                if (TextUtils.isEmpty(password)){
-                    Toast.makeText(RegisterPage.this,"enter password",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                firebaseAuth.createUserWithEmailAndPassword(email,password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()){
-                                    Toast.makeText(RegisterPage.this,"Registration successfully!",Toast.LENGTH_SHORT).show();
-                                    Intent intent=new Intent(RegisterPage.this, LoginPage.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                                else{
-                                    Toast.makeText(RegisterPage.this,"authentication failed!!",Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+            });
 
-            }
         });
-
     }
 }
