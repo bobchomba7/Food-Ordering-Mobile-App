@@ -2,10 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/backBtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/purpfade11"
+    android:background="@drawable/bluue"
     tools:context=".Activity.ListFoodsActivity">
 
     <ScrollView
@@ -21,7 +21,7 @@
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/backBtn"
+                android:id="@+id/ConstraintLayout2"
                 android:layout_width="match_parent"
                 android:layout_height="71dp"
                 android:padding="12dp">
@@ -38,11 +38,11 @@
                 <TextView
                     android:id="@+id/titleTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="55dp"
                     android:text="title"
-                    android:textColor="@color/black"
-                    android:textSize="25dp"
-                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:textSize="49dp"
+                    android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

@@ -46,7 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 break;
             }
             case 1:{
-                holder.burger.setBackgroundResource(R.drawable.orange);
+                holder.burger.setBackgroundResource(R.drawable.purp);
                 break;
             }
             case 2:{
@@ -54,7 +54,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 break;
             }
             case 3:{
-                holder.burger.setBackgroundResource(R.drawable.orange);
+                holder.burger.setBackgroundResource(R.drawable.purp);
                 break;
             }
             case 4:{
@@ -62,7 +62,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 break;
             }
             case 5:{
-                holder.burger.setBackgroundResource(R.drawable.orange);
+                holder.burger.setBackgroundResource(R.drawable.purp);
                 break;
             }
             case 6:{
@@ -70,7 +70,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.viewho
                 break;
             }
             case 7:{
-            holder.burger.setBackgroundResource(R.drawable.orange);
+            holder.burger.setBackgroundResource(R.drawable.purp);
             break;
             }
         }

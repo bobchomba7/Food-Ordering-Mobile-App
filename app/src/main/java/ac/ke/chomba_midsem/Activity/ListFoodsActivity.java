@@ -63,7 +63,7 @@ public class ListFoodsActivity extends BaseActivity {
                         list.add(issue.getValue(Foods.class));
                     }
                     if(list.size()>0){
-                        binding.foodListView.setLayoutManager( new GridLayoutManager(ListFoodsActivity.this,2));
+                        binding.foodListView.setLayoutManager( new GridLayoutManager(ListFoodsActivity.this,1));
                         adapterListFoods = new FoodListAdapter(list);
                         binding.foodListView.setAdapter(adapterListFoods);
                     }

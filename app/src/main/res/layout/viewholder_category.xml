@@ -18,7 +18,7 @@
             android:layout_width="79dp"
             android:layout_height="79dp"
             android:layout_gravity="center"
-            android:background="@drawable/orange"
+            android:background="@drawable/purp"
             android:padding="3dp"
             app:srcCompat="@drawable/btn_1" />
 
@@ -29,7 +29,7 @@
             android:layout_marginTop="8dp"
             android:text="Title"
             android:textAlignment="center"
-            android:textColor="@color/orange"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

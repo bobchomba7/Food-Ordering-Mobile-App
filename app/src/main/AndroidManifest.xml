@@ -13,6 +13,12 @@
         android:theme="@style/Theme.Chombamidsem"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.CartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.DetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.ListFoodsActivity"
             android:exported="false" />
         <activity
