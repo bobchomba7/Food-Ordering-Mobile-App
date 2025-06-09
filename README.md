@@ -1,3 +1,5 @@
+PROJECT OVERVIEW
+
 The above project is an effficient mobile food ordering application that aims at reducing waiting time and ordering time in school/university cafeterias.
 
 **Objectives**
